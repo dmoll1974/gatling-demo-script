@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+   
+
+    <groupId>com.gatling.demo</groupId>
+    <artifactId>gatling-demo-script</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!--<parent>-->
+        <!--<groupId>com.afklm.maven.pom</groupId>-->
+        <!--<artifactId>kl-projects-pom</artifactId>-->
+        <!--<version>3.1.6</version>-->
+    <!--</parent>-->
+
+    <properties>
+ 
+        <encoding>UTF-8</encoding>
+        <maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
+        
+        <!-- dependency versioning -->
+
+        <gatling.version>2.1.7</gatling.version>
+        <gatling-maven-plugin.version>2.1.7</gatling-maven-plugin.version>
+
+
+        <!-- lt-dash url  -->
+        <ltdashUrl>http://104.155.50.158:3000</ltdashUrl>
+        <!--<ltdashUrl>http://localhost:3000</ltdashUrl>-->
+        
+        <!-- Default Simulation class  -->
+        <applicationSimulation>com.gatling.demo.gatling.setup.demo</applicationSimulation>
+
+        <!-- Default test environment  -->
+        <activeEnvironment>local</activeEnvironment>
+
+        <!-- Default Graphite prefix -->
+        <graphitePrefix>gatling2</graphitePrefix>
+
+        <!-- By default Jenkins build Url is used -->
+        <buildResultKey>${BUILD_URL}</buildResultKey>
+
+        <!-- By default no proxy is used -->
+        <useProxy>false</useProxy>
+
+        
+        <!-- Default sets build ID and activeProfileId to DEBUG so no events will be logged to the lt-dash server -->
+        <activeProfileId>debug</activeProfileId>
+        <buildId>DEBUG</buildId>
+
+        <!-- Settings for the LTDashboard -->
+        <application.name>DEMO</application.name>
+        <application.version>1.0</application.version>
+        
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.gatling.highcharts</groupId>
+                <artifactId>gatling-charts-highcharts</artifactId>
+                <version>${gatling.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>io.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.8</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.3</version>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>net.alchim31.maven</groupId>
+                    <artifactId>scala-maven-plugin</artifactId>
+                    <version>${scala-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>io.gatling</groupId>
+                    <artifactId>gatling-maven-plugin</artifactId>
+                    <version>${gatling-maven-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <configuration>
+                    <configDir>src/test/resources</configDir>
+                    <dataFolder>src/test/resources/data</dataFolder>
+                    <resultsFolder>target/gatling/results</resultsFolder>
+                    <bodiesFolder>src/test/resources/request-bodies</bodiesFolder>
+                    <simulationsFolder>src/test/scala</simulationsFolder>
+                    <noReports>true</noReports>
+                    <!--<reportsOnly>false</reportsOnly>-->
+                    <simulationClass>${applicationSimulation}</simulationClass>
+                    <jvmArgs>
+                        <jvmArg>-DltdashUrl=${ltdashUrl}</jvmArg>
+                        <jvmArg>-DactiveProfileId=${activeProfileId}</jvmArg>
+                        <jvmArg>-DactiveEnvironment=${activeEnvironment}</jvmArg>
+                        <jvmArg>-DbaselineBuild=${application.name}-${application.version}</jvmArg>
+                        <jvmArg>-DproductName=${application.name}</jvmArg>
+                        <jvmArg>-DdashboardName=${dashboardId}</jvmArg>
+                        <jvmArg>-DbuildResultKey=${buildResultKey}</jvmArg>
+                        <jvmArg>-DbuildId=${buildId}</jvmArg>
+                        <jvmArg>-DuseProxy=${useProxy}</jvmArg>
+                        <jvmArg>-Dgatling.data.graphite.rootPathPrefix=${graphitePrefix}</jvmArg>
+                        <jvmArg>-Xms2g</jvmArg>
+                        <jvmArg>-Xmx2g</jvmArg>
+                        <jvmArg>-Djavax.net.ssl.sessionCacheSize=1000</jvmArg>
+                        <jvmArg>-XX:+UseG1GC</jvmArg>
+                        <jvmArg>-XX:+ParallelRefProcEnabled</jvmArg>
+                        <jvmArg>-XX:+PrintGCDetails</jvmArg>
+                        <jvmArg>-XX:+PrintGCDateStamps</jvmArg>
+                        <jvmArg>-Xloggc:gc.log</jvmArg>
+                    </jvmArgs>
+                    <!--<fork>true</fork>-->
+                    <propagateSystemProperties>false</propagateSystemProperties>
+                    <!--<failOnError>true</failOnError>-->
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+
+    <profiles>
+        <!-- ************************************************************************ ==
+          == Below we have defined two sets of profiles, which control the type of    ==
+          == test that will be run and the targeted environment. By default, this     ==
+          == project runs a load test on the local environment. If you wish to run a  ==
+          == stress test on AE1, you can activate the stress and ae1 profiles:        ==
+          ==                                                                          ==
+          == mvn gatling:execute -Pstress -Pae1                                       ==
+          == ************************************************************************ -->
+
+        <!-- Test Profiles -->
+
+        <profile>
+            <id>stress</id>
+            <activation>
+            </activation>
+            <properties>
+                <activeProfileId>stress</activeProfileId>
+                <dashboardId>STRESS</dashboardId>
+                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+            </properties>
+        </profile>
+        <profile>
+            <id>load</id>
+            <activation>
+            </activation>
+            <properties>
+                <activeProfileId>load</activeProfileId>
+                <dashboardId>LOAD</dashboardId>
+                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+            </properties>
+        </profile>
+        <profile>
+            <id>endurance</id>
+            <activation>
+            </activation>
+            <properties>
+                <activeProfileId>endurance</activeProfileId>
+                <dashboardId>ENDURANCE</dashboardId>
+                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+            </properties>
+        </profile>
+        <profile>
+            <id>failover</id>
+            <activation>
+            </activation>
+            <properties>
+                <activeProfileId>failover</activeProfileId>
+                <dashboardId>FAILOVER</dashboardId>
+                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+            </properties>
+        </profile>
+        <profile>
+            <id>slowbackend</id>
+            <activation>
+            </activation>
+            <properties>
+                <activeProfileId>slowbackend</activeProfileId>
+                <dashboardId>SLOWBACKEND</dashboardId>
+                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+            </properties>
+        </profile>
+        <profile>
+            <id>nightly</id>
+            <activation>
+            </activation>
+            <properties>
+                <activeProfileId>nightly</activeProfileId>
+                <dashboardId>NIGHTLY</dashboardId>
+                <buildResultKey>${bamboo.buildResultsUrl}</buildResultKey>
+                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <graphitePrefix>gatling2.nightly</graphitePrefix>
+            </properties>
+        </profile>
+
+
+        <!-- Test Environments -->
+        <profile>
+            <id>tst</id>
+            <activation>
+            </activation>
+            <properties>
+                <activeEnvironment>tst</activeEnvironment>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>acc</id>
+            <activation>
+            </activation>
+            <properties>
+                <activeEnvironment>acc</activeEnvironment>
+            </properties>
+        </profile>
+
+        <!-- This profile can be used to trigger the RestartServers simulation in between two sequential tests when using the batch files  -->
+        <profile>
+            <id>restart</id>
+            <activation>
+            </activation>
+            <properties>
+                <applicationSimulation>com.gatling.demo.gatling.helpers.RestartServers</applicationSimulation>
+            </properties>
+        </profile>
+
+
+
+        <!-- This profile can be used to route the traffic through a proxy for debugging  -->
+        <profile>
+            <id>proxy</id>
+            <activation>
+            </activation>
+            <properties>
+                <useProxy>true</useProxy>
+            </properties>
+        </profile>
+
+
+
+
+    </profiles>
+</project>

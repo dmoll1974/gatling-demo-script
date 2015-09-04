@@ -1,0 +1,5 @@
+<control method="${control-task}">
+    <controllable>
+        <!-- Put DeployIt REST API request body here, see https://www9.klm.com/corporate/pse/confluence/display/THREEEM/How+to+create+automated+fail+over+test%3A+automatic+stopping+and+starting+of+nodes for instructions-->
+    </controllable>
+</control>

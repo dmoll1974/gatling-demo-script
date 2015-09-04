@@ -1,0 +1,6 @@
+{
+    "eventDescription": "${eventDescription}",
+    "testRunId":  "${testRunId}",
+    "dashboardName":  "${dashboardName}"
+
+}

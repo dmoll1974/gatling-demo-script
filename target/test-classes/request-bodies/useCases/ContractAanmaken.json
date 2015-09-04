@@ -1,0 +1,125 @@
+{
+    "relatieId": "${relatieId}",
+    "tariefbladId": "${tariefbladId}",
+    "vandatum": 1435701600000,
+    "einddatum": 1483138800000,
+    "typeKanaal": "AM_OBAM",
+    "opzegtermijn": 6,
+    "verlengingsduur": 12,
+    "offerteduur": 5,
+    "acceptatieduur": 5,
+    "inVoorbereiding": false,
+    "contractVersieId": "${contractVersieId}",
+    "contractRegels": [
+        {
+            "id": "24760477031667129861395649053191999746",
+            "typeData": "NUMMER",
+            "waarde": 1
+        },
+        {
+            "id": "51107586006628533560014419789887055614",
+            "typeData": "NUMMER",
+            "waarde": 5
+        },
+        {
+            "id": "16240763226040014096623319233016696408",
+            "typeData": "NUMMER",
+            "waarde": 14
+        },
+        {
+            "id": "62209288008441540957424106607252696289",
+            "typeData": "NUMMER",
+            "waarde": 2.5
+        },
+        {
+            "id": "21420913738576500398640643633990279338",
+            "typeData": "BOOLEAN",
+            "waarde": true
+        },
+        {
+            "id": "68128162197330801817084390298447240180",
+            "typeData": "NUMMER",
+            "waarde": 0,
+            "weergaveEenheid": "EUR_KWH"
+        },
+        {
+            "id": "87054564906503902908450301384809777286",
+            "typeData": "NUMMER",
+            "waarde": 0,
+            "weergaveEenheid": "EUR_KWH"
+        },
+        {
+            "id": "15444194834964923794409082606600763772",
+            "typeData": "NUMMER",
+            "waarde": 100
+        }
+    ],
+    "aansluitingen": [
+        {
+            "id": "${aansluitingId}",
+            "aansluitingRegels": [
+                {
+                    "id": "43920839812553519729579356129801463962",
+                    "waarde": 10.0000000000,
+                    "tariefbladAfwijking": null,
+                    "tariefbladAfwijkingInfo": null
+                },
+                {
+                    "id": "54666477943325309325357323943960012412",
+                    "waarde": false,
+                    "tariefbladAfwijking": null,
+                    "tariefbladAfwijkingInfo": null
+                },
+                {
+                    "id": "9862713827042422242431592998583653503",
+                    "waarde": 9.0000000000,
+                    "tariefbladAfwijking": null,
+                    "tariefbladAfwijkingInfo": null
+                },
+                {
+                    "id": "59214319031028210609119854695967929393",
+                    "waarde": false,
+                    "tariefbladAfwijking": null,
+                    "tariefbladAfwijkingInfo": null
+                },
+                {
+                    "id": "84321803006599413570962740965471632869",
+                    "waarde": true,
+                    "tariefbladAfwijking": null,
+                    "tariefbladAfwijkingInfo": null
+                },
+                {
+                    "id": "88133684823585056110424475326887982824",
+                    "waarde": false,
+                    "tariefbladAfwijking": null,
+                    "tariefbladAfwijkingInfo": null
+                },
+                {
+                    "id": "31923631876155099521275374744310681215",
+                    "waarde": false,
+                    "tariefbladAfwijking": null,
+                    "tariefbladAfwijkingInfo": null
+                },
+                {
+                    "id": "73916654347513219152194296301356620760",
+                    "waarde": 0.8000000000,
+                    "tariefbladAfwijking": null,
+                    "tariefbladAfwijkingInfo": null
+                },
+                {
+                    "id": "54496960837169820788220528104266704646",
+                    "waarde": 0.6500000000,
+                    "tariefbladAfwijking": null,
+                    "tariefbladAfwijkingInfo": null
+                },
+                {
+                    "id": "10674798295142646884055592207804514764",
+                    "waarde": null,
+                    "tariefbladAfwijking": null,
+                    "tariefbladAfwijkingInfo": null
+                }
+
+            ]
+        }
+    ]            
+}
