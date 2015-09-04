@@ -6,7 +6,7 @@ import io.gatling.core.session.Expression
 import scala.concurrent.duration._
 
 
-object HelloWorld  {
+object HelloWorld
   {
 
 
@@ -14,7 +14,7 @@ object HelloWorld  {
     val useCase =
       exec(http("Hello world")
         .get("/hello-world")
-        .check(regex("greetings").exists))
+        .check(regex("Hello").exists))
 
 
   }

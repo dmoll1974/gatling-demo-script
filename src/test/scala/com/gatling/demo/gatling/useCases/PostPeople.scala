@@ -13,7 +13,7 @@ object PostPeople{
 
 
   val useCase =
-    exec(http("Get People")
+    exec(http("Post People")
       .post("/people")
       .header("Content-Type", "application/json")
       .body(ELFileBody("useCases/people.json"))

@@ -30,7 +30,7 @@
         <!--<ltdashUrl>http://localhost:3000</ltdashUrl>-->
         
         <!-- Default Simulation class  -->
-        <applicationSimulation>com.gatling.demo.gatling.setup.demo</applicationSimulation>
+        <applicationSimulation>com.gatling.demo.gatling.setup.Demo</applicationSimulation>
 
         <!-- Default test environment  -->
         <activeEnvironment>local</activeEnvironment>

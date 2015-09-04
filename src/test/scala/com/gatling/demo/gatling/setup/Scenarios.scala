@@ -16,28 +16,16 @@ object Scenarios {
   /**
    * These are the scenarios run in 'normal' mode.
    */
-  val acceptanceTestScenarioUnlimited = scenario("acceptanceTestScenarioUnlimited").feed(RelatiesFeeder.relaties).feed(UsersFeeder.users)
+  val acceptanceTestScenario = scenario("acceptanceTestScenario")
     .exec(HelloWorld.useCase)
-        .forever(
-          exec(ZoekRelatie.useCase)
-         )
-  val acceptanceTestScenarioUnityContractAanmaken = scenario("acceptanceTestScenarioUnityContractAanmaken").feed(RelatiesFeeder.relaties).feed(UsersFeeder.users)
-    .forever(
-      pace(60 seconds)
-      .exec(GetPeople.useCase)
-    )
-  val acceptanceTestScenarioUnityDocumentenAanmaken = scenario("acceptanceTestScenarioUnityDocumentenAanmaken").feed(RelatiesFeeder.relaties).feed(UsersFeeder.users)
-    .forever(
-      pace(60 seconds)
-      .exec(PostPeople.useCase)
-    )
-
+    .exec(PostPeople.useCase)
+    .exec(GetPeople.useCase)
   /**
    * These are the scenarios run in 'debug' mode.
    */
-  val debugScenario = scenario("debug").feed(RelatiesFeeder.relaties).feed(UsersFeeder.users)
-    .exitBlockOnFail(
-      exec(ZoekRelatie.useCase)
-    )
+  val debugScenario = scenario("debug")
+    .exec(HelloWorld.useCase)
+    .exec(PostPeople.useCase)
+    .exec(GetPeople.useCase)
 
 }

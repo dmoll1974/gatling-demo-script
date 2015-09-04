@@ -1,7 +1,7 @@
 package com.gatling.demo.gatling.setup
 
 import com.gatling.demo.gatling.configuration.Configuration
-import com.gatling.demo.gatling.helpers.{LtDashHelper, HelperScenarios}
+import com.gatling.demo.gatling.helpers.LtDashHelper
 import io.gatling.core.Predef._
 import io.gatling.core.structure.{PopulatedScenarioBuilder, ScenarioBuilder}
 
@@ -56,7 +56,7 @@ class Demo extends LtDashHelper {
    */
   def setupSingleScenario(scn: ScenarioBuilder): PopulatedScenarioBuilder = scn.inject(
       // Each default scenario is delayed by 10 seconds to allow the Mocca caches to be loaded
-      rampUsers(Configuration.initialUsersPerSecond) over (Configuration.rampUpPeriodInSeconds),
+      rampUsersPerSec(Configuration.initialUsersPerSecond) to Configuration.targetUsersPerSecond during (Configuration.rampUpPeriodInSeconds),
       constantUsersPerSec(Configuration.targetUsersPerSecond) during(Configuration.constantUsagePeriodInSeconds)
 
 

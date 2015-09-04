@@ -36,12 +36,12 @@ object Configuration {
     config.getConfig("tests.profile.default")
   }
 
-  val targetBaseUrlUni = activeEnvironment.getString("targetBaseUrlUni")
-  val targetBaseUrl = activeEnvironment.getString("targetBaseUrlUnl")
+//  val targetBaseUrlUni = activeEnvironment.getString("targetBaseUrlUni")
+  val targetBaseUrl = activeEnvironment.getString("targetBaseUrl")
 
   // Note, these values are retrieved from the 'default' profile when DEBUG is active, but they are ignored
   val initialUsersPerSecond = activeProfile.getDouble("initialUsersPerSecond")
-  val rampUsers = activeProfile.getInt("rampUsers")
+//  val rampUsers = activeProfile.getInt("rampUsers")
   val targetUsersPerSecond = activeProfile.getDouble("targetUsersPerSecond")
   val rampUpPeriodInSeconds = ( activeProfile.getLong("rampUpPeriodInSeconds"), TimeUnit.SECONDS )
   val timeToFiveMinutesAfterRampUp = ( activeProfile.getLong("rampUpPeriodInSeconds") + 300, TimeUnit.SECONDS )
