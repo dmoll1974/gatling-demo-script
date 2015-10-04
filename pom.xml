@@ -136,8 +136,8 @@
                         <jvmArg>-DbuildId=${buildId}</jvmArg>
                         <jvmArg>-DuseProxy=${useProxy}</jvmArg>
                         <jvmArg>-Dgatling.data.graphite.rootPathPrefix=${graphitePrefix}</jvmArg>
-                        <jvmArg>-Xms1g</jvmArg>
-                        <jvmArg>-Xmx1g</jvmArg>
+                        <jvmArg>-Xms256m</jvmArg>
+                        <jvmArg>-Xmx512m</jvmArg>
                         <jvmArg>-Djavax.net.ssl.sessionCacheSize=1000</jvmArg>
                         <jvmArg>-XX:+UseG1GC</jvmArg>
                         <jvmArg>-XX:+ParallelRefProcEnabled</jvmArg>
