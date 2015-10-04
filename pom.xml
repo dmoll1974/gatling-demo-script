@@ -26,8 +26,7 @@
 
 
         <!-- lt-dash url  -->
-        <ltdashUrl>http://104.155.27.180</ltdashUrl>
-        <!--<ltdashUrl>http://localhost:3000</ltdashUrl>-->
+        <ltdashUrl>http://localhost:3000</ltdashUrl>
         
         <!-- Default Simulation class  -->
         <applicationSimulation>com.gatling.demo.gatling.setup.Demo</applicationSimulation>
