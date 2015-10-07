@@ -49,7 +49,7 @@
         <buildId>DEBUG</buildId>
 
         <!-- Settings for the LTDashboard -->
-        <application.name>DEMO</application.name>
+        <application.name>GATLING</application.name>
         <application.version>1.0</application.version>
         
     </properties>
