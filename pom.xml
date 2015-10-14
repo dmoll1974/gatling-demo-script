@@ -271,7 +271,16 @@
             </properties>
         </profile>
 
-
+        <!-- This profile can be used to trigger the assertions simulation to assert test run results from the pipeline   -->
+        <profile>
+            <id>assertions</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <applicationSimulation>com.klm.gatling.helpers.Assertions</applicationSimulation>
+            </properties>
+        </profile>
 
 
     </profiles>
