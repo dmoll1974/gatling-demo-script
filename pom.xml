@@ -133,7 +133,7 @@
                         <jvmArg>-DproductName=${application.name}</jvmArg>
                         <jvmArg>-DdashboardName=${dashboardName}</jvmArg>
                         <jvmArg>-DbuildResultKey=${buildResultKey}</jvmArg>
-                        <jvmArg>-DtestRunId=${testRunId}</jvmArg>
+                        <jvmArg>-DtestRunId=${BUILD_ID}</jvmArg>
                         <jvmArg>-DuseProxy=${useProxy}</jvmArg>
                         <jvmArg>-Dgatling.data.graphite.rootPathPrefix=${graphitePrefix}</jvmArg>
                         <jvmArg>-Xms256m</jvmArg>
