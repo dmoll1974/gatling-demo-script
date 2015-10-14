@@ -95,22 +95,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Assertions.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Assertions.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/scala/com/gatling/demo/gatling/helpers/Assertions.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <caret line="0" column="24" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
               <folding>
-                <element signature="e#38#76#0" expanded="true" />
+                <element signature="e#43#81#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8513986">
+            <state vertical-scroll-proportion="-16.793104">
               <caret line="280" column="97" selection-start-line="280" selection-start-column="97" selection-end-line="280" selection-end-column="97" />
               <folding />
             </state>
@@ -151,11 +151,11 @@
         <option value="$PROJECT_DIR$/src/test/scala/com/gatling/demo/gatling/helpers/LtdashEventClient.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/com/gatling/demo/gatling/helpers/TargetsIoEventClient.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/com/gatling/demo/gatling/helpers/Demo.scala" />
-        <option value="$PROJECT_DIR$/src/test/scala/com/gatling/demo/gatling/helpers/Assertions.scala" />
         <option value="$PROJECT_DIR$/src/test/resources/application.conf" />
         <option value="$PROJECT_DIR$/src/test/scala/com/gatling/demo/gatling/helpers/TargetsIoClient.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/com/gatling/demo/gatling/helpers/TargetsIoHelper.scala" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/scala/com/gatling/demo/gatling/helpers/Assertions.scala" />
       </list>
     </option>
   </component>
@@ -970,7 +970,7 @@
       <workItem from="1441396468321" duration="30000" />
       <workItem from="1441396550964" duration="2025000" />
       <workItem from="1441400103656" duration="3841000" />
-      <workItem from="1444815387918" duration="5962000" />
+      <workItem from="1444815387918" duration="7213000" />
     </task>
     <task id="LOCAL-00001" summary="progress&#10;">
       <created>1434918804492</created>
@@ -994,11 +994,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104422000" />
+    <option name="totallyTimeSpent" value="105673000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1406,16 +1406,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/com/gatling/demo/gatling/helpers/Assertions.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#38#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/scala/com/gatling/demo/gatling/configuration/Configuration.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1452,9 +1442,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8513986">
+        <state vertical-scroll-proportion="-16.793104">
           <caret line="280" column="97" selection-start-line="280" selection-start-column="97" selection-end-line="280" selection-end-column="97" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scala/com/gatling/demo/gatling/helpers/Assertions.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="24" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
+          <folding>
+            <element signature="e#43#81#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

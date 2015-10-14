@@ -278,7 +278,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <applicationSimulation>com.klm.gatling.helpers.Assertions</applicationSimulation>
+                <applicationSimulation>com.gatling.demo.gatling.helpers.Assertions</applicationSimulation>
             </properties>
         </profile>
 
