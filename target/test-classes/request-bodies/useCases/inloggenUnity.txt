@@ -1,1 +1,0 @@
-{"gebruikersnaam":"${user}","wachtwoord":"${user}"}

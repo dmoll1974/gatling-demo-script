@@ -16,16 +16,16 @@ class TargetsIoHelper extends Simulation {
   if (System.getProperty("ltdashUrl") != null) ltdashUrl = System.getProperty("ltdashUrl") else ltdashUrl = "http://dashboard.com"
   val dashboardName = System.getProperty("dashboardName")
   val productName = System.getProperty("productName")
-  val buildId = System.getProperty("buildId")
+  val testRunId = System.getProperty("testRunId")
 
-  if (buildId != "DEBUG") {
-    println("ltdashUrl: " + ltdashUrl + " buildId: "+ buildId + " productName: " + productName + " dashboardName: " + dashboardName + " baselineBuild: " + baselineBuild + " buildResultKey: " + buildResultKey)
-    require(ltdashUrl != null && buildId != null && productName != null && dashboardName != null && baselineBuild != null)
+  if (testRunId != "DEBUG") {
+    println("ltdashUrl: " + ltdashUrl + " testRunId: "+ testRunId + " productName: " + productName + " dashboardName: " + dashboardName + " baselineBuild: " + baselineBuild + " buildResultKey: " + buildResultKey)
+    require(ltdashUrl != null && testRunId != null && productName != null && dashboardName != null && baselineBuild != null)
   }
   
   def beforeSimulation() {
-    if (buildId != "DEBUG")
-        TargetsIoClient.sendEvent(ltdashUrl, "start", buildId, baselineBuild, buildResultKey, dashboardName, productName)
+    if (testRunId != "DEBUG")
+        TargetsIoClient.sendEvent(ltdashUrl, "start", testRunId, baselineBuild, buildResultKey, dashboardName, productName)
 
   }
 
@@ -35,8 +35,8 @@ class TargetsIoHelper extends Simulation {
 
   def afterSimulation() {
 
-    if (buildId != "DEBUG")
-        TargetsIoClient.sendEvent(ltdashUrl, "end", buildId, baselineBuild, buildResultKey, dashboardName, productName)
+    if (testRunId != "DEBUG")
+        TargetsIoClient.sendEvent(ltdashUrl, "end", testRunId, baselineBuild, buildResultKey, dashboardName, productName)
 
   }
 
