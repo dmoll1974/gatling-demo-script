@@ -1,8 +1,8 @@
 package com.gatling.demo.gatling.helpers
 
-object GraphiteClient {
+object TargetsIoClient {
 
-  def sendGraphiteEvent( host: String, what: String, buildId: String, baselineBuild: String, buildResultKey: String, dashboardName: String, productName: String ) {
+  def sendEvent( host: String, what: String, buildId: String, baselineBuild: String, buildResultKey: String, dashboardName: String, productName: String ) {
 
     println( "sending "+what+"-loadtest call to rest service with data: buildId: "+ buildId + ", productName= " + productName + ", dashboardName: " + dashboardName + ", baselineBuild: " + baselineBuild + ", buildResultKey " + buildResultKey )
 
@@ -10,7 +10,7 @@ object GraphiteClient {
     val event = new Event( buildId, what, baselineBuild, productName, dashboardName, buildResultKey )
 
     try {
-      val response = LtdashEventClient.postEvent( eventUrl, event )
+      val response = TargetsIoEventClient.postEvent( eventUrl, event )
       println( "responseCode: "+response )
       if ( response == 500 ) {
 

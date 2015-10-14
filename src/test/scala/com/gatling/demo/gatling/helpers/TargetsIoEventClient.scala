@@ -5,7 +5,7 @@ import org.apache.http.client.methods.HttpPost
 import org.apache.http.entity.StringEntity
 import org.apache.http.impl.client.DefaultHttpClient
 
-object LtdashEventClient{
+object TargetsIoEventClient{
 
   def postEvent (url: String, event: Event) : Int = {
 

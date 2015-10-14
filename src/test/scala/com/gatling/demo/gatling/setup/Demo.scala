@@ -1,7 +1,7 @@
 package com.gatling.demo.gatling.setup
 
 import com.gatling.demo.gatling.configuration.Configuration
-import com.gatling.demo.gatling.helpers.LtDashHelper
+import com.gatling.demo.gatling.helpers.TargetsIoHelper
 import io.gatling.core.Predef._
 import io.gatling.core.structure.{PopulatedScenarioBuilder, ScenarioBuilder}
 
@@ -11,7 +11,7 @@ import io.gatling.core.structure.{PopulatedScenarioBuilder, ScenarioBuilder}
  * the application.conf file. When changes have to be made to which scenarios to run, that
  * information is gathered in the Scenarios object.
  */
-class Demo extends LtDashHelper {
+class Demo extends TargetsIoHelper {
 
 
   /** 

@@ -1,12 +1,12 @@
 package com.gatling.demo.gatling.helpers
 
-import com.gatling.demo.gatling.helpers.GraphiteClient
+import com.gatling.demo.gatling.helpers.TargetsIoClient
 import io.gatling.core.Predef._
 
 /**
  * Requires at least application and version to be exposed as JVM parameters
  */
-class LtDashHelper extends Simulation {
+class TargetsIoHelper extends Simulation {
 
   var baselineBuild : String = _
   var ltdashUrl : String = _
@@ -25,7 +25,7 @@ class LtDashHelper extends Simulation {
   
   def beforeSimulation() {
     if (buildId != "DEBUG")
-        GraphiteClient.sendGraphiteEvent(ltdashUrl, "start", buildId, baselineBuild, buildResultKey, dashboardName, productName)
+        TargetsIoClient.sendEvent(ltdashUrl, "start", buildId, baselineBuild, buildResultKey, dashboardName, productName)
 
   }
 
@@ -36,7 +36,7 @@ class LtDashHelper extends Simulation {
   def afterSimulation() {
 
     if (buildId != "DEBUG")
-        GraphiteClient.sendGraphiteEvent(ltdashUrl, "end", buildId, baselineBuild, buildResultKey, dashboardName, productName)
+        TargetsIoClient.sendEvent(ltdashUrl, "end", buildId, baselineBuild, buildResultKey, dashboardName, productName)
 
   }
 
