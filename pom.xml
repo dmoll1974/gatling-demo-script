@@ -32,7 +32,7 @@
         <applicationSimulation>com.gatling.demo.gatling.setup.Demo</applicationSimulation>
 
         <!-- Default test environment  -->
-        <activeEnvironment>local</activeEnvironment>
+        <!--<activeEnvironment>local</activeEnvironment>-->
 
         <!-- Default Graphite prefix -->
         <graphitePrefix>gatling2</graphitePrefix>
