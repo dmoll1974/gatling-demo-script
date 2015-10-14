@@ -279,6 +279,7 @@
             </activation>
             <properties>
                 <applicationSimulation>com.gatling.demo.gatling.helpers.Assertions</applicationSimulation>
+                <dashboardName>ENDURANCE</dashboardName>
             </properties>
         </profile>
 
