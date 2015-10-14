@@ -7,7 +7,7 @@ object TargetsIoClient {
     println( "sending "+what+"-loadtest call to rest service with data: buildId: "+ buildId + ", productName= " + productName + ", dashboardName: " + dashboardName + ", baselineBuild: " + baselineBuild + ", buildResultKey " + buildResultKey )
 
     val eventUrl = host + "/events"
-    val event = new Event( buildId, what, baselineBuild, productName, dashboardName, buildResultKey )
+    val event = new targetsIoEvent( buildId, what, baselineBuild, productName, dashboardName, buildResultKey )
 
     try {
       val response = TargetsIoEventClient.postEvent( eventUrl, event )
@@ -27,6 +27,6 @@ object TargetsIoClient {
 
 }
 
-class Event( var testRunId: String, var eventDescription: String, var baseline: String, var productName: String, var dashboardName: String, var buildResultKey: String ) {
+class targetsIoEvent( var testRunId: String, var eventDescription: String, var baseline: String, var productName: String, var dashboardName: String, var buildResultKey: String ) {
 }
 

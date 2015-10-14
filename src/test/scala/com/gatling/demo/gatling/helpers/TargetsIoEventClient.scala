@@ -7,7 +7,7 @@ import org.apache.http.impl.client.DefaultHttpClient
 
 object TargetsIoEventClient{
 
-  def postEvent (url: String, event: Event) : Int = {
+  def postEvent (url: String, event: targetsIoEvent) : Int = {
 
     // convert it to a JSON string
     val eventAsJson = new Gson().toJson(event)
