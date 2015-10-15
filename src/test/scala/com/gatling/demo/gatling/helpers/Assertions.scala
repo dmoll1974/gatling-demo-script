@@ -33,11 +33,11 @@ class Assertions extends Simulation{
                            .set("dashboardName", System.getProperty("dashboardName"))
                            .set("testRunId", System.getProperty("testRunId"))
     )
-      .exec(http("Benchmark to previous test run")
+      .exec(http("Get benchmark results for test run")
       .get( """/testrun/${productName}/${dashboardName}/${testRunId}""" )
       .headers(ltdashHeaders)
       .check(jsonPath("$.benchmarkResultPreviousOK").is("true"))
-      .check(jsonPath("$benchmarkResultFixedOK").is("true"))
+      .check(jsonPath("$.benchmarkResultFixedOK").is("true"))
       .check(jsonPath("$.meetsRequirement").is("true"))
      )
 
