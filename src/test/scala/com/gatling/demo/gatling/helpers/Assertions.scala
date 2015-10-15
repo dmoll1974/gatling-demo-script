@@ -17,6 +17,7 @@ class Assertions extends Simulation{
     .extraInfoExtractor(ExtraInfo => {
     if (ExtraInfo.status == KO)
       println("Failed assertion: " + ExtraInfo.request.getUri())
+      println("Response: " + ExtraInfo.response.body)
     Nil
   })
 
@@ -35,17 +36,17 @@ class Assertions extends Simulation{
       .exec(http("Benchmark to previous test run")
       .get( """/testrun/${productName}/${dashboardName}/${testRunId}""" )
       .headers(ltdashHeaders)
-      .check(jsonPath(".benchmarkResultPreviousOK").is("ok"))
+      .check(jsonPath("$.benchmarkResultPreviousOK").is("ok"))
       )
       .exec(http("Benchmark to fixed baseline")
       .get( """/testrun/${productName}/${dashboardName}/${testRunId}""" )
       .headers(ltdashHeaders)
-      .check(jsonPath(".benchmarkResultFixedOK").is("ok"))
+      .check(jsonPath("$benchmarkResultFixedOK").is("ok"))
       )
       .exec(http("Requirements results")
       .get( """/testrun/${productName}/${dashboardName}/${testRunId}""" )
       .headers(ltdashHeaders)
-      .check(jsonPath(".meetsRequirement").is("ok"))
+      .check(jsonPath("$.meetsRequirement").is("ok"))
       )
   val assertionsScenario = scenario("assertions")
     .exec(targetsIoAssertions)
