@@ -15,7 +15,7 @@
     <!--</parent>-->
 
     <properties>
- 
+        
         <encoding>UTF-8</encoding>
         <maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
         
@@ -27,6 +27,7 @@
 
         <!-- lt-dash url  -->
         <targetsIoUrl>http://targetsio:3000</targetsIoUrl>
+        <targetsIoLinkUrl>System.getProperty("TARGETSIO_TARGETSIO_1_PORT_3000_TCP_ADDR")</targetsIoLinkUrl>
         
         <!-- Default Simulation class  -->
         <applicationSimulation>com.gatling.demo.gatling.setup.Demo</applicationSimulation>
@@ -144,7 +145,7 @@
                         <jvmArg>-XX:+PrintGCDetails</jvmArg>
                         <jvmArg>-XX:+PrintGCDateStamps</jvmArg>
                         <jvmArg>-Xloggc:gc.log</jvmArg>
-                        <jvmArg>-DtargetsIoLinkUrl="http://" + System.getProperty("TARGETSIO_TARGETSIO_1_PORT_3000_TCP_ADDR") + ":3000"</jvmArg>
+                        <jvmArg>-DtargetsIoLinkUrl=${targetsIoLinkUrl}</jvmArg>
                     </jvmArgs>
                     <!--<fork>true</fork>-->
                     <propagateSystemProperties>false</propagateSystemProperties>
