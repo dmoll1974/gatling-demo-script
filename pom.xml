@@ -27,7 +27,7 @@
 
         <!-- lt-dash url  -->
         <targetsIoUrl>http://targetsio:3000</targetsIoUrl>
-        <targetsIoLinkUrl>System.getProperty("TARGETSIO_TARGETSIO_1_PORT_3000_TCP_ADDR")</targetsIoLinkUrl>
+        <targetsIoLinkUrl>${env.TARGETSIO_TARGETSIO_1_PORT_3000_TCP_ADDR}</targetsIoLinkUrl>
         
         <!-- Default Simulation class  -->
         <applicationSimulation>com.gatling.demo.gatling.setup.Demo</applicationSimulation>
