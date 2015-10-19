@@ -15,7 +15,7 @@ class Assertions extends Simulation{
   var productName = System.getProperty("productName")
   var dashboardName = System.getProperty("dashboardName")
   var testRunId = System.getProperty("testRunId")
-  var targetsIoLinkUrl = System.getProperty("targetsIoLinkUrl")
+  var targetsIoLinkUrl = "http://" + System.getProperty("targetsIoLinkUrl") + ":3000"
 
   val httpProtocol = http
     .baseURL(targetsIoUrl)
