@@ -11,10 +11,11 @@ import io.gatling.http.Predef._
 class Assertions extends Simulation{
 
 
-  var targetsIoUrl = "http://" + System.getProperty("TARGETSIO_TARGETSIO_1_PORT_3000_TCP_ADDR") + ":3000"
+  var targetsIoUrl = System.getProperty("targetsIoUrl")
   var productName = System.getProperty("productName")
   var dashboardName = System.getProperty("dashboardName")
   var testRunId = System.getProperty("testRunId")
+  var targetsIoLinkUrl = System.getProperty("targetsIoLinkUrl")
 
   val httpProtocol = http
     .baseURL(targetsIoUrl)
@@ -24,15 +25,15 @@ class Assertions extends Simulation{
 
         case "Get requirements results for test run" =>
 
-          println("Requirements results failed: " + targetsIoUrl + "/#!/requirements/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
+          println("Requirements results failed: " + targetsIoLinkUrl + "/#!/requirements/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
 
         case "Get benchmark to previous build results" =>
 
-          println("Benchmark to previous build results failed: " + targetsIoUrl + "/#!/benchmark-previous-build/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
+          println("Benchmark to previous build results failed: " + targetsIoLinkUrl + "/#!/benchmark-previous-build/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
 
         case "Get benchmark to fixed baseline results" =>
 
-          println("Benchmark to previous build results failed: " + targetsIoUrl + "/#!/benchmark-fixed-baseline/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
+          println("Benchmark to previous build results failed: " + targetsIoLinkUrl + "/#!/benchmark-fixed-baseline/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
 
       }
 
