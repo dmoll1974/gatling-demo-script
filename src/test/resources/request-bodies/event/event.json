@@ -1,6 +1,8 @@
 {
     "eventDescription": "${eventDescription}",
     "testRunId":  "${testRunId}",
-    "dashboardName":  "${dashboardName}"
+    "dashboardName":  "${dashboardName}",
+    "productName":  "${productName}"
+
 
 }
