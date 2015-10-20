@@ -22,18 +22,20 @@ class Assertions extends Simulation{
     .extraInfoExtractor(ExtraInfo => {
     if (ExtraInfo.status == KO)
       ExtraInfo.requestName match{
-
+        /*Dirty hack to get public IP*/
+        var splitBuildResultKey = buildResultKey.spilt(""":"")
+        
         case "Get requirements results for test run" =>
 
-          println("Requirements results failed: " + targetsIoLinkUrl + "/#!/requirements/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
+          println("Requirements results failed: " + splitBuildResultKey[0] + ":" + splitBuildResultKey[1] + ":3000/#!/requirements/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
 
         case "Get benchmark to previous build results" =>
 
-          println("Benchmark to previous build results failed: " + targetsIoLinkUrl + "/#!/benchmark-previous-build/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
+          println("Benchmark to previous build results failed: " + splitBuildResultKey[0] + ":" + splitBuildResultKey[1] + ":3000/#!/benchmark-previous-build/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
 
         case "Get benchmark to fixed baseline results" =>
 
-          println("Benchmark to previous build results failed: " + targetsIoLinkUrl + "/#!/benchmark-fixed-baseline/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
+          println("Benchmark to previous build results failed: " + splitBuildResultKey[0] + ":" + splitBuildResultKey[1] + ":3000/#!/benchmark-fixed-baseline/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
 
       }
 
@@ -56,23 +58,18 @@ class Assertions extends Simulation{
       .exec(http("Get requirements results for test run")
       .get( """/testrun/${productName}/${dashboardName}/${testRunId}""" )
       .headers(ltdashHeaders)
-//      .check(jsonPath("$.benchmarkResultPreviousOK").is("true"))
-//      .check(jsonPath("$.benchmarkResultFixedOK").is("true"))
+      .check(jsonPath("$.buildResultKey").saveAs("buildResultKey"))
       .check(jsonPath("$.meetsRequirement").is("true"))
      )
       .exec(http("Get benchmark to previous build results")
       .get( """/testrun/${productName}/${dashboardName}/${testRunId}""" )
       .headers(ltdashHeaders)
       .check(jsonPath("$.benchmarkResultPreviousOK").is("true"))
-//      .check(jsonPath("$.benchmarkResultFixedOK").is("true"))
-//      .check(jsonPath("$.meetsRequirement").is("true"))
       )
       .exec(http("Get benchmark to fixed baseline results")
       .get( """/testrun/${productName}/${dashboardName}/${testRunId}""" )
       .headers(ltdashHeaders)
-//      .check(jsonPath("$.benchmarkResultPreviousOK").is("true"))
       .check(jsonPath("$.benchmarkResultFixedOK").is("true"))
-//      .check(jsonPath("$.meetsRequirement").is("true"))
       )
   val assertionsScenario = scenario("assertions")
     .exec(targetsIoAssertions)
