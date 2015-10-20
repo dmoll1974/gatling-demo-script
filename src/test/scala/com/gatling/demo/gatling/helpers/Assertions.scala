@@ -19,9 +19,11 @@ class Assertions extends Simulation{
   val httpProtocol = http
     .baseURL(targetsIoUrl)
     .extraInfoExtractor(ExtraInfo => {
+    /* if one of the assertion fails, log deeplink url to targets-io dashboard*/
     if (ExtraInfo.status == KO)
-      ExtraInfo.requestName match{
 
+      ExtraInfo.requestName match{
+        
         case "Get requirements results for test run" =>
 
           println("Requirements results failed: " + targetsIoUrl + "/#!/requirements/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
@@ -55,23 +57,17 @@ class Assertions extends Simulation{
       .exec(http("Get requirements results for test run")
       .get( """/testrun/${productName}/${dashboardName}/${testRunId}""" )
       .headers(ltdashHeaders)
-//      .check(jsonPath("$.benchmarkResultPreviousOK").is("true"))
-//      .check(jsonPath("$.benchmarkResultFixedOK").is("true"))
       .check(jsonPath("$.meetsRequirement").is("true"))
      )
       .exec(http("Get benchmark to previous build results")
       .get( """/testrun/${productName}/${dashboardName}/${testRunId}""" )
       .headers(ltdashHeaders)
       .check(jsonPath("$.benchmarkResultPreviousOK").is("true"))
-//      .check(jsonPath("$.benchmarkResultFixedOK").is("true"))
-//      .check(jsonPath("$.meetsRequirement").is("true"))
       )
       .exec(http("Get benchmark to fixed baseline results")
       .get( """/testrun/${productName}/${dashboardName}/${testRunId}""" )
       .headers(ltdashHeaders)
-//      .check(jsonPath("$.benchmarkResultPreviousOK").is("true"))
       .check(jsonPath("$.benchmarkResultFixedOK").is("true"))
-//      .check(jsonPath("$.meetsRequirement").is("true"))
       )
   val assertionsScenario = scenario("assertions")
     .exec(targetsIoAssertions)
