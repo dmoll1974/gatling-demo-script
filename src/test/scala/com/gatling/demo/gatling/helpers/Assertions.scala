@@ -15,27 +15,25 @@ class Assertions extends Simulation{
   var productName = System.getProperty("productName")
   var dashboardName = System.getProperty("dashboardName")
   var testRunId = System.getProperty("testRunId")
-  var targetsIoLinkUrl = "http://" + System.getProperty("targetsIoLinkUrl") + ":3000"
 
   val httpProtocol = http
     .baseURL(targetsIoUrl)
     .extraInfoExtractor(ExtraInfo => {
     if (ExtraInfo.status == KO)
+        
       ExtraInfo.requestName match{
-        /*Dirty hack to get public IP*/
-        var splitBuildResultKey = buildResultKey.spilt(""":"")
         
         case "Get requirements results for test run" =>
 
-          println("Requirements results failed: " + splitBuildResultKey[0] + ":" + splitBuildResultKey[1] + ":3000/#!/requirements/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
+          println("Requirements results failed: " + targetsIoUrl + "/#!/requirements/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
 
         case "Get benchmark to previous build results" =>
 
-          println("Benchmark to previous build results failed: " + splitBuildResultKey[0] + ":" + splitBuildResultKey[1] + ":3000/#!/benchmark-previous-build/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
+          println("Benchmark to previous build results failed: " + targetsIoUrl + "/#!/benchmark-previous-build/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
 
         case "Get benchmark to fixed baseline results" =>
 
-          println("Benchmark to previous build results failed: " + splitBuildResultKey[0] + ":" + splitBuildResultKey[1] + ":3000/#!/benchmark-fixed-baseline/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
+          println("Benchmark to previous build results failed: " + targetsIoUrl + "/#!/benchmark-fixed-baseline/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
 
       }
 
