@@ -289,7 +289,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                    <testRunId> ${PARENT_JOB_NAME}-${PARENT_BUILD_NUMBER}</testRunId>
+                    <testRunId>${PARENT_JOB_NAME}-${PARENT_BUILD_NUMBER}</testRunId>
             </properties
         </profile>
 
