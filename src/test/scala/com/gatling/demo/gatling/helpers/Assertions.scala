@@ -50,11 +50,11 @@ class Assertions extends Simulation{
 
 
   val targetsIoAssertions =
-    exec(session => session.set("productName", productName)
+      exec(session => session.set("productName", productName)
                            .set("dashboardName", dashboardName)
-                           .set("testRunId", testRunId
-        println("""Getting benchmark results from: /testrun/${productName}/${dashboardName}/${testRunId}"""")                   )
-    )
+                           .set("testRunId", testRunId))
+      .exec(session => {println("Getting benchmark results from: /testrun/" + session("productName").as[String] + "/" + session("dashboardName").as[String] + "/" + session("testRunId").as[String])                   
+                      session} )
       .exec(http("Get requirements results for test run")
       .get( """/testrun/${productName}/${dashboardName}/${testRunId}""" )
       .headers(ltdashHeaders)
