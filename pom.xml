@@ -37,6 +37,9 @@
 
         <!-- By default no proxy is used -->
         <useProxy>false</useProxy>
+        
+        <!-- By default, Jenkins job name and build numner are used as testrun ID  -->
+        <testRunId>${JOB_NAME}-${BUILD_NUMBER}</testRunId>
 
         
         <!-- Default sets build ID and activeProfileId to DEBUG so no events will be logged to the lt-dash server -->
@@ -128,7 +131,7 @@
                         <jvmArg>-DproductName=${application.name}</jvmArg>
                         <jvmArg>-DdashboardName=${dashboardName}</jvmArg>
                         <jvmArg>-DbuildResultKey=${buildResultKey}</jvmArg>
-                        <jvmArg>-DtestRunId=${PARENT_JOB_NAME}-${PARENT_BUILD_NUMBER}</jvmArg>
+                        <jvmArg>-DtestRunId=${testRunId}</jvmArg>
                         <jvmArg>-DuseProxy=${useProxy}</jvmArg>
                         <jvmArg>-Dgatling.data.graphite.rootPathPrefix=${graphitePrefix}</jvmArg>
                         <jvmArg>-Xms256m</jvmArg>
@@ -278,6 +281,17 @@
             </properties>
         </profile>
 
+        <!-- This profile is used to set the test run id based on parent job in a multi job build   -->
+
+        <profile>
+            <id>multijob</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                    <testRunId> ${PARENT_JOB_NAME}-${PARENT_BUILD_NUMBER}</testRunId>
+            </properties
+        </profile>
 
     </profiles>
 </project>
