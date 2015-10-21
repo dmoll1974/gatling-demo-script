@@ -290,7 +290,7 @@
             </activation>
             <properties>
                     <testRunId>${PARENT_JOB_NAME}-${PARENT_BUILD_NUMBER}</testRunId>
-            </properties
+            </properties>
         </profile>
 
     </profiles>
