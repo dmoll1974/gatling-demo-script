@@ -38,7 +38,7 @@ class Assertions extends Simulation{
 
       }
 
-      println("Response: " + ExtraInfo.response.body)
+      // println("Response: " + ExtraInfo.response.body)
     Nil
   })
 
