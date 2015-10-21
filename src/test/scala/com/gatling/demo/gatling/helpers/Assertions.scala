@@ -34,7 +34,7 @@ class Assertions extends Simulation{
 
         case "Get benchmark to fixed baseline results" =>
 
-          println("Benchmark to previous build results failed: " + targetsIoUrl + "/#!/benchmark-fixed-baseline/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
+          println("Benchmark to fixed baseline results failed: " + targetsIoUrl + "/#!/benchmark-fixed-baseline/" + productName + "/" + dashboardName + "/" + testRunId + "/failed")
 
       }
 
