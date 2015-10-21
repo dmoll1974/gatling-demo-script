@@ -53,7 +53,7 @@ class Assertions extends Simulation{
     exec(session => session.set("productName", productName)
                            .set("dashboardName", dashboardName)
                            .set("testRunId", testRunId
-        println("Getting benchmark results from: """/testrun/${productName}/${dashboardName}/${testRunId}"""")                   )
+        println("""Getting benchmark results from: /testrun/${productName}/${dashboardName}/${testRunId}"""")                   )
     )
       .exec(http("Get requirements results for test run")
       .get( """/testrun/${productName}/${dashboardName}/${testRunId}""" )
