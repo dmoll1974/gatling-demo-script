@@ -126,7 +126,6 @@
                         <jvmArg>-DtargetsIoUrl=${targetsIoUrl}</jvmArg>
                         <jvmArg>-DactiveProfileId=${activeProfileId}</jvmArg>
                         <jvmArg>-DactiveEnvironment=${activeEnvironment}</jvmArg>
-                        <jvmArg>-DbaselineBuild=${application.name}-${application.version}</jvmArg>
                         <jvmArg>-DproductName=${application.name}</jvmArg>
                         <jvmArg>-DdashboardName=${dashboardName}</jvmArg>
                         <jvmArg>-DbuildResultKey=${buildResultKey}</jvmArg>
