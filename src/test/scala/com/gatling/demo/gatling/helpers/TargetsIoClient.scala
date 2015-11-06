@@ -2,12 +2,12 @@ package com.gatling.demo.gatling.helpers
 
 object TargetsIoClient {
 
-  def sendEvent( host: String, what: String, buildId: String, baselineBuild: String, buildResultKey: String, dashboardName: String, productName: String ) {
+  def sendEvent( host: String, what: String, buildId: String, buildResultKey: String, dashboardName: String, productName: String ) {
 
-    println( "sending "+what+"-loadtest call to rest service with data: buildId: "+ buildId + ", productName= " + productName + ", dashboardName: " + dashboardName + ", baselineBuild: " + baselineBuild + ", buildResultKey " + buildResultKey )
+    println( "sending "+what+"-loadtest call to rest service with data: buildId: "+ buildId + ", productName= " + productName + ", dashboardName: " + dashboardName + ", buildResultKey " + buildResultKey )
 
     val eventUrl = host + "/events"
-    val event = new targetsIoEvent( buildId, what, baselineBuild, productName, dashboardName, buildResultKey )
+    val event = new targetsIoEvent( buildId, what, productName, dashboardName, buildResultKey )
 
     try {
       val response = TargetsIoEventClient.postEvent( eventUrl, event )
@@ -27,6 +27,6 @@ object TargetsIoClient {
 
 }
 
-class targetsIoEvent( var testRunId: String, var eventDescription: String, var baseline: String, var productName: String, var dashboardName: String, var buildResultKey: String ) {
+class targetsIoEvent( var testRunId: String, var eventDescription: String, var productName: String, var dashboardName: String, var buildResultKey: String ) {
 }
 
