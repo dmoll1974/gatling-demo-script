@@ -5,6 +5,8 @@ import com.gatling.demo.gatling.helpers.HelperScenarios
 import com.klm.gatling.util.TargetsIoSimulation
 import io.gatling.core.Predef._
 import io.gatling.core.structure.{PopulatedScenarioBuilder, ScenarioBuilder}
+import scala.concurrent.duration._
+
 
 /**
  * This Simulation class is responsible for configuring the Scenarios to run, keeping the active
@@ -84,6 +86,6 @@ class Demo extends TargetsIoSimulation {
 
 
   // Go!
-  setUp(runnableScenarios).protocols(if (Configuration.isDebugActive) Configuration.httpDebugProtocol else Configuration.httpProtocol)
+  setUp(runnableScenarios).protocols(if (Configuration.isDebugActive) Configuration.httpDebugProtocol else Configuration.httpProtocol).maxDuration(Configuration.rampUpPeriodInSeconds + Configuration.constantUsagePeriodInSeconds)
 
 }
