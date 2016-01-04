@@ -1,7 +1,8 @@
 package com.gatling.demo.gatling.setup
 
 import com.gatling.demo.gatling.configuration.Configuration
-import com.gatling.demo.gatling.helpers.TargetsIoHelper
+import com.gatling.demo.gatling.helpers.HelperScenarios
+import com.klm.gatling.util.TargetsIoSimulation
 import io.gatling.core.Predef._
 import io.gatling.core.structure.{PopulatedScenarioBuilder, ScenarioBuilder}
 
@@ -11,7 +12,7 @@ import io.gatling.core.structure.{PopulatedScenarioBuilder, ScenarioBuilder}
  * the application.conf file. When changes have to be made to which scenarios to run, that
  * information is gathered in the Scenarios object.
  */
-class Demo extends TargetsIoHelper {
+class Demo extends TargetsIoSimulation {
 
 
   /** 
@@ -25,7 +26,25 @@ class Demo extends TargetsIoHelper {
    * This list is constructed by configuring the scenarios in the baseScenario and optionally prepending the
    * list with some auxiliary scenarios when they are needed.
    */
-  val runnableScenarios: List[PopulatedScenarioBuilder] = configureBaseScenarios(List(baseScenario))
+  /**
+    * The runnableScenarios list will contain injected versions of all of the scenarios that need to be run.
+    * This list is constructed by configuring the scenarios in the baseScenario and optionally prepending the
+    * list with some auxiliary scenarios when they are needed.
+    */
+  val runnableScenarios: List[PopulatedScenarioBuilder] = addKeepAliveScenario(configureBaseScenarios(List(baseScenario)))
+
+
+  /**
+    * Adds the scenario that sends keepalive requests to the wily-export app.
+    * @param scenarios the list of ready-made scenarios
+    * @return the list with all the previously prepared scenarios, including the failover scenario if that profile is active.
+    */
+  def addKeepAliveScenario(scenarios: List[PopulatedScenarioBuilder]): List[PopulatedScenarioBuilder] = {
+    if (!Configuration.isDebugActive)
+      HelperScenarios.runningTestKeepAliveScenario.inject(atOnceUsers(1)) :: scenarios
+    else
+      scenarios
+  }
 
 
 
