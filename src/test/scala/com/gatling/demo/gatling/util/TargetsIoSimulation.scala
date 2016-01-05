@@ -1,4 +1,4 @@
-package com.klm.gatling.util
+package com.gatling.demo.gatling.util
 
 import io.gatling.core.Predef._
 
@@ -24,7 +24,7 @@ class TargetsIoSimulation extends Simulation {
 
   def beforeSimulation() {
     if (testRunId != "DEBUG")
-        TargetsIoClient.sendEvent(targetsIoUrl, "start", testRunId,  buildResultKey, dashboardName, productName)
+        TargetsIoClient.sendTestRunEvent(targetsIoUrl, "start", testRunId,  buildResultKey, dashboardName, productName)
 
   }
 
@@ -35,7 +35,7 @@ class TargetsIoSimulation extends Simulation {
   def afterSimulation() {
 
     if (testRunId != "DEBUG")
-        TargetsIoClient.sendEvent(targetsIoUrl, "end", testRunId, buildResultKey, dashboardName, productName)
+        TargetsIoClient.sendTestRunEvent(targetsIoUrl, "end", testRunId, buildResultKey, dashboardName, productName)
 
   }
 

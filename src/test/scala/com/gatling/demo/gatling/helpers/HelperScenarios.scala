@@ -32,7 +32,8 @@ object HelperScenarios {
         .set("targetsIoUrl", System.getProperty("targetsIoUrl"))
       )
         .exec(http("Wily Export Keep Alive")
-          .get("${targetsIoUrl}/running-test/${productName}/${dashboardName}/${testRunId}/keep-alive")
+          .post("${targetsIoUrl}/running-test/keep-alive")
+          .body(ELFileBody("bodies/testrun/testrun.json")).asJSON
           .headers(targetsIoHeaders)
           .silent
         )
