@@ -2,7 +2,7 @@ package com.gatling.demo.gatling.setup
 
 import com.gatling.demo.gatling.configuration.Configuration
 import com.gatling.demo.gatling.helpers.HelperScenarios
-import com.klm.gatling.util.TargetsIoSimulation
+import com.gatling.demo.gatling.util.TargetsIoSimulation
 import io.gatling.core.Predef._
 import io.gatling.core.structure.{PopulatedScenarioBuilder, ScenarioBuilder}
 import scala.concurrent.duration._

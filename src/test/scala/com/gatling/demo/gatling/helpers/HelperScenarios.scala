@@ -33,7 +33,7 @@ object HelperScenarios {
       )
         .exec(http("Wily Export Keep Alive")
           .post("${targetsIoUrl}/running-test/keep-alive")
-          .body(ELFileBody("bodies/testrun/testrun.json")).asJSON
+          .body(ELFileBody("testrun/testrun.json")).asJSON
           .headers(targetsIoHeaders)
           .silent
         )
