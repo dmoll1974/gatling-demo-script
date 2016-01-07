@@ -34,7 +34,7 @@ object HelperScenarios {
     )
        .exec(http("Keep Alive")
          .post("${targetsIoUrl}/running-test/keep-alive")
-         .body(StringBody("""{"testRunId":  "${testRunId}","dashboardName":  "${dashboardName}", "productName":  "${productName}", "buildResultKey":  "${buildResultKey}"}}""")).asJSON
+         .body(StringBody("""{"testRunId":  "${testRunId}","dashboardName":  "${dashboardName}", "productName":  "${productName}", "buildResultKey":  "${buildResultKey}"}""")).asJSON
          .headers(targetsIoHeaders)
          .silent
        )
