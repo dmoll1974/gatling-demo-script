@@ -23,20 +23,21 @@ object HelperScenarios {
     * keep alive requests to the Wily Export Daemon during the test run.
     */
 
-  val runningTestKeepAliveScenario = scenario("Wily Export Keepalive")
+  val runningTestKeepAliveScenario = scenario("Targets-io Keepalive")
     .forever(
-      exec(session => session
-        .set("productName", System.getProperty("productName"))
-        .set("dashboardName", System.getProperty("dashboardName"))
-        .set("testRunId", System.getProperty("testRunId"))
-        .set("targetsIoUrl", System.getProperty("targetsIoUrl"))
-      )
-        .exec(http("Wily Export Keep Alive")
-          .post("${targetsIoUrl}/running-test/keep-alive")
-          .body(ELFileBody("testrun/testrun.json")).asJSON
-          .headers(targetsIoHeaders)
-          .silent
-        )
-        .pause(14 seconds)
+     exec(session => session
+      .set("productName", System.getProperty("productName"))
+      .set("dashboardName", System.getProperty("dashboardName"))
+      .set("testRunId", System.getProperty("testRunId"))
+      .set("buildResultKey", System.getProperty("buildResultKey"))
+      .set("targetsIoUrl", System.getProperty("targetsIoUrl"))
     )
+       .exec(http("Keep Alive")
+         .post("${targetsIoUrl}/running-test/keep-alive")
+         .body(StringBody("""{"testRunId":  "${testRunId}","dashboardName":  "${dashboardName}", "productName":  "${productName}", "buildResultKey":  "${buildResultKey}"}}""")).asJSON
+         .headers(targetsIoHeaders)
+         .silent
+       )
+    .pause(14 seconds)
+  )
 }
