@@ -6,12 +6,7 @@ import io.gatling.http.Predef._
 
 import scala.concurrent.duration._
 
-/**
-  * This object collects the Scenarios in the project for use in the Simulation. There are two
-  * main properties in this object: acceptanceTestScenario and debugScenario. These two are
-  * used in the Simulation class to setup the actual tests to run. If you wish to add
-  * scenarios to either run, add them here.
-  */
+
 object HelperScenarios {
 
 
@@ -19,8 +14,7 @@ object HelperScenarios {
     """Content-Type""" -> """application/json""")
 
   /**
-    * Auxiliary scenario, included only when the wily export profile is active. It will send
-    * keep alive requests to the Wily Export Daemon during the test run.
+    * Scenario that sends keep alive requests to the targets-io app during the test run.
     */
 
   val runningTestKeepAliveScenario = scenario("Targets-io Keepalive")
@@ -29,12 +23,12 @@ object HelperScenarios {
       .set("productName", System.getProperty("productName"))
       .set("dashboardName", System.getProperty("dashboardName"))
       .set("testRunId", System.getProperty("testRunId"))
-      .set("buildResultKey", System.getProperty("buildResultKey"))
+      .set("buildResultsUrl", System.getProperty("buildResultsUrl"))
       .set("targetsIoUrl", System.getProperty("targetsIoUrl"))
     )
        .exec(http("Keep Alive")
          .post("${targetsIoUrl}/running-test/keep-alive")
-         .body(StringBody("""{"testRunId":  "${testRunId}","dashboardName":  "${dashboardName}", "productName":  "${productName}", "buildResultKey":  "${buildResultKey}"}""")).asJSON
+         .body(StringBody("""{"testRunId":  "${testRunId}","dashboardName":  "${dashboardName}", "productName":  "${productName}", "buildResultsUrl":  "${buildResultsUrl}"}""")).asJSON
          .headers(targetsIoHeaders)
          .silent
        )
