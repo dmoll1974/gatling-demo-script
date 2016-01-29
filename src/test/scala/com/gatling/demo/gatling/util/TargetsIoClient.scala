@@ -4,7 +4,7 @@ object TargetsIoClient {
 
   def sendTestRunEvent(host: String, command: String, testRunId: String, buildResultsUrl: String, dashboardName: String, productName: String ) {
 
-    println( "sending "+ command + " test run call to rest service at host " + host + " with data: testRunId: "+ testRunId + ", productName: " + productName + ", dashboardName: " + dashboardName +  ", buildResultKey " + buildResultKey )
+    println( "sending "+ command + " test run call to rest service at host " + host + " with data: testRunId: "+ testRunId + ", productName: " + productName + ", dashboardName: " + dashboardName +  ", buildResultsUrl " + buildResultsUrl )
 
     val runningTestUrl = host + "/running-test/" + command
 
