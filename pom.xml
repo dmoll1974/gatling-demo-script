@@ -33,7 +33,7 @@
         <graphitePrefix>gatling2</graphitePrefix>
 
         <!-- By default Jenkins build Url is used -->
-        <buildResultKey>${BUILD_URL}</buildResultKey>
+        <buildResultsUrl>${BUILD_URL}</buildResultsUrl>
 
         <!-- By default no proxy is used -->
         <useProxy>false</useProxy>
@@ -128,7 +128,7 @@
                         <jvmArg>-DactiveEnvironment=${activeEnvironment}</jvmArg>
                         <jvmArg>-DproductName=${application.name}</jvmArg>
                         <jvmArg>-DdashboardName=${dashboardName}</jvmArg>
-                        <jvmArg>-DbuildResultKey=${buildResultKey}</jvmArg>
+                        <jvmArg>-DbuildResultsUrl=${buildResultsUrl}</jvmArg>
                         <jvmArg>-DtestRunId=${testRunId}</jvmArg>
                         <jvmArg>-DuseProxy=${useProxy}</jvmArg>
                         <jvmArg>-Dgatling.data.graphite.rootPathPrefix=${graphitePrefix}</jvmArg>
