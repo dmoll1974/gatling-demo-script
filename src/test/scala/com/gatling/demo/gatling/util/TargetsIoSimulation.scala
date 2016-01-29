@@ -7,24 +7,22 @@ import io.gatling.core.Predef._
  */
 class TargetsIoSimulation extends Simulation {
 
-  var baselineBuild : String = _
   var targetsIoUrl : String = _
-  var buildResultKey : String = _
-  if (System.getProperty("baselineBuild") != null) baselineBuild = System.getProperty("baselineBuild") else  baselineBuild = "none"
-  if (System.getProperty("buildResultKey") != null) buildResultKey = System.getProperty("buildResultKey") else buildResultKey = "MANUAL_TEST"
+  var buildResultsUrl : String = _
+  if (System.getProperty("buildResultsUrl") != null) buildResultsUrl = System.getProperty("buildResultsUrl") else buildResultsUrl = "MANUAL_TEST"
   if (System.getProperty("targetsIoUrl") != null) targetsIoUrl = System.getProperty("targetsIoUrl") else targetsIoUrl = "http://dashboard.com"
   val dashboardName = System.getProperty("dashboardName")
   val productName = System.getProperty("productName")
   val testRunId = System.getProperty("testRunId")
 
   if (testRunId != "DEBUG") {
-    println("targetsIoUrl: " + targetsIoUrl + " testRunId: "+ testRunId + " productName: " + productName + " dashboardName: " + dashboardName + " baselineBuild: " + baselineBuild + " buildResultKey: " + buildResultKey)
-    require(targetsIoUrl != null && testRunId != null && productName != null && dashboardName != null && baselineBuild != null)
+    println("targetsIoUrl: " + targetsIoUrl + " testRunId: "+ testRunId + " productName: " + productName + " dashboardName: " + dashboardName  + " buildResultsUrl: " + buildResultsUrl)
+    require(targetsIoUrl != null && testRunId != null && productName != null && dashboardName != null )
   }
 
   def beforeSimulation() {
     if (testRunId != "DEBUG")
-        TargetsIoClient.sendTestRunEvent(targetsIoUrl, "start", testRunId,  buildResultKey, dashboardName, productName)
+        TargetsIoClient.sendTestRunEvent(targetsIoUrl, "start", testRunId,  buildResultsUrl, dashboardName, productName)
 
   }
 
@@ -35,7 +33,7 @@ class TargetsIoSimulation extends Simulation {
   def afterSimulation() {
 
     if (testRunId != "DEBUG")
-        TargetsIoClient.sendTestRunEvent(targetsIoUrl, "end", testRunId, buildResultKey, dashboardName, productName)
+        TargetsIoClient.sendTestRunEvent(targetsIoUrl, "end", testRunId, buildResultsUrl, dashboardName, productName)
 
   }
 
