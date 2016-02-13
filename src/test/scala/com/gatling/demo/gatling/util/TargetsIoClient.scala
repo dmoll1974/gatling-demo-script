@@ -2,13 +2,13 @@ package com.gatling.demo.gatling.util
 
 object TargetsIoClient {
 
-  def sendTestRunEvent(host: String, command: String, testRunId: String, buildResultsUrl: String, dashboardName: String, productName: String ) {
+  def sendTestRunEvent(host: String, command: String, testRunId: String, buildResultsUrl: String, dashboardName: String, productName: String, productRelease: String ) {
 
-    println( "sending "+ command + " test run call to rest service at host " + host + " with data: testRunId: "+ testRunId + ", productName: " + productName + ", dashboardName: " + dashboardName +  ", buildResultsUrl " + buildResultsUrl )
+    println( "sending "+ command + " test run call to rest service at host " + host + " with data: testRunId: "+ testRunId + ", productName: " + productName + ", productRelease: " + productRelease + ", dashboardName: " + dashboardName +  ", buildResultsUrl " + buildResultsUrl )
 
     val runningTestUrl = host + "/running-test/" + command
 
-    val runningTest = new targetsIoRunningTest(productName, dashboardName, testRunId, buildResultsUrl)
+    val runningTest = new targetsIoRunningTest(productName, dashboardName, testRunId, buildResultsUrl, productRelease)
 
     try {
       val response = TargetsIoTestRunClient.runningTestCall(runningTestUrl, runningTest)
@@ -27,6 +27,6 @@ object TargetsIoClient {
 
 }
 
-class targetsIoRunningTest( var productName: String, var dashboardName: String, var testRunId: String, var buildResultsUrl: String ) {
+class targetsIoRunningTest( var productName: String, var dashboardName: String, var testRunId: String, var buildResultsUrl: String, var productRelease: String ) {
 }
 
