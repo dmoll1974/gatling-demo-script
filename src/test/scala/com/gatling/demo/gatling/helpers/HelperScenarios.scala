@@ -25,10 +25,11 @@ object HelperScenarios {
       .set("testRunId", System.getProperty("testRunId"))
       .set("buildResultsUrl", System.getProperty("buildResultsUrl"))
       .set("targetsIoUrl", System.getProperty("targetsIoUrl"))
+      .set("productRelease", System.getProperty("productRelease"))
     )
        .exec(http("Keep Alive")
          .post("${targetsIoUrl}/running-test/keep-alive")
-         .body(StringBody("""{"testRunId":  "${testRunId}","dashboardName":  "${dashboardName}", "productName":  "${productName}", "buildResultsUrl":  "${buildResultsUrl}"}""")).asJSON
+         .body(StringBody("""{"testRunId":  "${testRunId}","dashboardName":  "${dashboardName}", "productName":  "${productName}", "buildResultsUrl":  "${buildResultsUrl}", "productRelease": "${productRelease}"}""")).asJSON
          .headers(targetsIoHeaders)
          .silent
        )
