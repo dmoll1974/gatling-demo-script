@@ -46,8 +46,8 @@
         <activeProfileId>debug</activeProfileId>
 
         <!-- Settings for the LTDashboard -->
-        <application.name>GATLING</application.name>
-        <application.version>1.0</application.version>
+        <productName>GATLING</productName>
+        <productRelease>1.0</productRelease>
         
     </properties>
 
@@ -126,7 +126,8 @@
                         <jvmArg>-DtargetsIoUrl=${targetsIoUrl}</jvmArg>
                         <jvmArg>-DactiveProfileId=${activeProfileId}</jvmArg>
                         <jvmArg>-DactiveEnvironment=${activeEnvironment}</jvmArg>
-                        <jvmArg>-DproductName=${application.name}</jvmArg>
+                        <jvmArg>-DproductName=${productName}</jvmArg>
+                        <jvmArg>-DproductRelease=${productRelease}</jvmArg>
                         <jvmArg>-DdashboardName=${dashboardName}</jvmArg>
                         <jvmArg>-DbuildResultsUrl=${buildResultsUrl}</jvmArg>
                         <jvmArg>-DtestRunId=${testRunId}</jvmArg>
@@ -169,7 +170,7 @@
             <properties>
                 <activeProfileId>stress</activeProfileId>
                 <dashboardName>STRESS</dashboardName>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
+                <testRunId>${productName}-${productRelease}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
@@ -179,7 +180,7 @@
             <properties>
                 <activeProfileId>load</activeProfileId>
                 <dashboardName>LOAD</dashboardName>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
+                <testRunId>${productName}-${productRelease}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
@@ -189,7 +190,7 @@
             <properties>
                 <activeProfileId>endurance</activeProfileId>
                 <dashboardName>ENDURANCE</dashboardName>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
+                <testRunId>${productName}-${productRelease}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
@@ -199,7 +200,7 @@
             <properties>
                 <activeProfileId>failover</activeProfileId>
                 <dashboardName>FAILOVER</dashboardName>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
+                <testRunId>${productName}-${productRelease}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
@@ -209,7 +210,7 @@
             <properties>
                 <activeProfileId>slowbackend</activeProfileId>
                 <dashboardName>SLOWBACKEND</dashboardName>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
+                <testRunId>${productName}-${productRelease}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
@@ -220,7 +221,7 @@
                 <activeProfileId>nightly</activeProfileId>
                 <dashboardName>NIGHTLY</dashboardName>
                 <buildResultKey>${bamboo.buildResultsUrl}</buildResultKey>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
+                <testRunId>${productName}-${productRelease}-${activeProfileId}-${maven.build.timestamp}</testRunId>
                 <graphitePrefix>gatling2.nightly</graphitePrefix>
             </properties>
         </profile>
