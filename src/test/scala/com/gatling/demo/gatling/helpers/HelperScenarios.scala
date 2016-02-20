@@ -1,5 +1,6 @@
 package com.gatling.demo.gatling.helpers
 
+import com.gatling.demo.gatling.configuration.Configuration
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
@@ -26,10 +27,11 @@ object HelperScenarios {
       .set("buildResultsUrl", System.getProperty("buildResultsUrl"))
       .set("targetsIoUrl", System.getProperty("targetsIoUrl"))
       .set("productRelease", System.getProperty("productRelease"))
+      .set("rampUpPeriod", Configuration.rampUpPeriodInSeconds)
     )
        .exec(http("Keep Alive")
          .post("${targetsIoUrl}/running-test/keep-alive")
-         .body(StringBody("""{"testRunId":  "${testRunId}","dashboardName":  "${dashboardName}", "productName":  "${productName}", "buildResultsUrl":  "${buildResultsUrl}", "productRelease": "${productRelease}"}""")).asJSON
+         .body(StringBody("""{"testRunId":  "${testRunId}","dashboardName":  "${dashboardName}", "productName":  "${productName}", "buildResultsUrl":  "${buildResultsUrl}", "productRelease": "${productRelease}", "rampUpPeriod": "${rampUpPeriod}"}""")).asJSON
          .headers(targetsIoHeaders)
          .silent
        )
