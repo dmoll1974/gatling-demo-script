@@ -31,7 +31,8 @@ object HelperScenarios {
     )
        .exec(http("Keep Alive")
          .post("${targetsIoUrl}/running-test/keep-alive")
-         .body(StringBody("""{"testRunId":  "${testRunId}","dashboardName":  "${dashboardName}", "productName":  "${productName}", "buildResultsUrl":  "${buildResultsUrl}", "productRelease": "${productRelease}", "rampUpPeriod": "${rampUpPeriod}"}""")).asJSON
+         //.body(StringBody("""{"testRunId":  "${testRunId}","dashboardName":  "${dashboardName}", "productName":  "${productName}", "buildResultsUrl":  "${buildResultsUrl}", "productRelease": "${productRelease}", "rampUpPeriod": "${rampUpPeriod}"}""")).asJSON
+         .body(StringBody("""{"testRunId":  "${testRunId}","dashboardName":  "${dashboardName}", "productName":  "${productName}", "buildResultsUrl":  "${buildResultsUrl}", "productRelease": "${productRelease}"}""")).asJSON
          .headers(targetsIoHeaders)
          .silent
        )
