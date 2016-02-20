@@ -27,7 +27,7 @@ object HelperScenarios {
       .set("buildResultsUrl", System.getProperty("buildResultsUrl"))
       .set("targetsIoUrl", System.getProperty("targetsIoUrl"))
       .set("productRelease", System.getProperty("productRelease"))
-      .set("rampUpPeriod", Configuration.rampUpPeriodInSeconds.toInt)
+      .set("rampUpPeriod", Configuration.rampUpPeriodInSeconds.toSeconds)
     )
        .exec(http("Keep Alive")
          .post("${targetsIoUrl}/running-test/keep-alive")
