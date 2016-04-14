@@ -220,6 +220,7 @@
             <properties>
                 <activeProfileId>nightly</activeProfileId>
                 <dashboardName>NIGHTLY</dashboardName>
+                <productRelease></productRelease>
                 <buildResultKey>${bamboo.buildResultsUrl}</buildResultKey>
                 <testRunId>${productName}-${productRelease}-${activeProfileId}-${maven.build.timestamp}</testRunId>
                 <graphitePrefix>gatling2.nightly</graphitePrefix>
