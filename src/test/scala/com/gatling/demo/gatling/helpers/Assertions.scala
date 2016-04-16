@@ -75,7 +75,7 @@ class Assertions extends Simulation{
 
   setUp(
 
-    assertionsScenario.inject(atOnceUsers(1))
+    assertionsScenario.inject(nothingFor(10),atOnceUsers(1)) //allow 10 seconds for the benchmarks to complete
 
   ).protocols(httpProtocol)
     .assertions(forAll.failedRequests.count.is(0))
